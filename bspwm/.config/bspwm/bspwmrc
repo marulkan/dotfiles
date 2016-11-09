@@ -1,0 +1,41 @@
+#! /bin/sh
+
+xrandr --newmode "2560x1440_41" 162.00 2560 2608 2640 2720 1440 1443 1448 1468 +hsync +vsync
+xrandr --addmode HDMI2 2560x1440_41
+xrandr --output HDMI2 --mode 2560x1440_41 --output HDMI1 --auto --right-of HDMI2 --rotate left
+
+bspc config border_width          1
+bspc config window_gap            10
+bspc config top_padding           15
+
+bspc config split_ratio           0.50
+bspc config borderless_monocle    true
+bspc config gapless_monocle       true
+bspc config focus_follows_pointer true
+
+bspc monitor HDMI2 -d 1 2 3 4 5 6 7 8
+bspc monitor HDMI1 -d 9 0
+#bspc monitor DP1 -d I II III IV V VI VII VIII
+#bspc monitor HDMI1 -d IX X
+
+bspc config focused_border_color "#f0f0f0"
+bspc config normal_border_color "#6C6C6C"
+bspc config active_border_color "#6C6C6C"
+bspc config focused_locked_border_color "#00C7D8"
+bspc config normal_locked_border_color "#6C6C6C"
+bspc config active_locked_border_color "#6C6C6C"
+bspc config urgent_border_color "#CB4B16"
+bspc config presel_border_color "#ee6666"
+
+bspc rule -a Battle.net.exe desktop=^5 follow=on floating=on
+bspc rule -a Wine desktop=^5 follow=on floating=on
+bspc rule -a mainwindow.py desktop=^5 follow=on floating=on
+bspc rule -a Mainwindow.py desktop=^5 follow=on floating=on
+bspc rule -a Steam desktop=^5 follow=on floating=on
+
+#compton &
+sxhkd &
+nitrogen --restore
+#numlockx &
+xsetroot -cursor_name left_ptr
+/home/marulkan/bin/bar.sh &

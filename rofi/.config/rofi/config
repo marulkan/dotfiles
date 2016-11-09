@@ -1,0 +1,16 @@
+rofi.modi: combi,window,run,ssh,drun
+rofi.lines: 15
+rofi.font: tamsyn 12
+rofi.combi-modi: window,drun,ssh
+rofi.terminal: termite
+rofi.kb-accept-entry:                Control+j,Control+m,Return,KP_Enter
+rofi.kb-row-up:                      Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab
+rofi.kb-row-down:                    Down,Control+n
+rofi.kb-remove-to-eol:               Control+k
+
+# glue_pro_blue.theme
+rofi.color-enabled: true
+rofi.color-window: #393939, #393939, #268bd2
+rofi.color-normal: #393939, #ffffff, #393939, #268bd2, #ffffff
+rofi.color-active: #393939, #268bd2, #393939, #268bd2, #205171
+rofi.color-urgent: #393939, #f3843d, #393939, #268bd2, #ffc39c
