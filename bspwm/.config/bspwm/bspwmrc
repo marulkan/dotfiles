@@ -10,7 +10,7 @@ sxhkd &
 
 bspc config border_width          1
 bspc config window_gap            10
-bspc config top_padding           15
+bspc config -m HDMI2 top_padding  16
 
 bspc config split_ratio             0.50
 bspc config borderless_monocle      true
@@ -18,11 +18,11 @@ bspc config gapless_monocle         true
 bspc config focus_follows_pointer   true
 bspc config pointer_follows_monitor true
 
-bspc monitor HDMI2 -d 1 2 3 4 5 6 7 8
-bspc monitor HDMI1 -d 9 0
+# bspc monitor HDMI2 -d 1 2 3 4 5 6 7 8
+# bspc monitor HDMI1 -d 9 0
 
-#bspc monitor DP1 -d I II III IV V VI VII VIII
-#bspc monitor HDMI1 -d IX X
+# bspc monitor DP1 -d I II III IV V VI VII VIII
+# bspc monitor HDMI1 -d IX X
 
 bspc config focused_border_color "#f0f0f0"
 bspc config normal_border_color "#6C6C6C"
@@ -33,22 +33,40 @@ bspc config active_locked_border_color "#6C6C6C"
 bspc config urgent_border_color "#CB4B16"
 bspc config presel_border_color "#ee6666"
 
-#bspc rule -a Battle.net.exe desktop=^5 follow=on floating=on
-#bspc rule -a Wine desktop=^5 follow=on floating=on
-#bspc rule -a mainwindow.py desktop=^5 follow=on floating=on
-#bspc rule -a Mainwindow.py desktop=^5 follow=on floating=on
-#bspc rule -a Steam desktop=^5 follow=on floating=on
 
-# Setting background.
-nitrogen --restore
+if [[ $(hostname) == "leandra" ]]; then
+    bspc monitor HDMI2 -d 1 2 3 4 5 6 7 8
+    bspc monitor HDMI1 -d 9 0
 
-# Loading custom keyboardlayout.
-setxkbmap se
-xmodmap ~/.Xmodmap
+    # Setting background.
+    nitrogen --restore
+    # Loading custom keyboardlayout.
+    setxkbmap se
+    xmodmap ~/.Xmodmap
+    # Setting pointer, auto hiding after 5 sec.
+    xsetroot -cursor_name left_ptr
+    unclutter -idle 5 -noevents &
+    # Starting lemon-collector.
+    /home/marulkan/bin/bar.sh &
+else
+    bspc rule -a scratchpad flag=sticky state=floating
+    bspc rule -a qutebrowser:webmail state=floating
+    bspc rule -a qutebrowser:main-window desktop='^9'
+    bspc rule -a Termite:term-mail desktop='^0'
+    bspc rule -a Termite:term-im desktop='^0'
+    bspc rule -a Termite:term-irc desktop='^0'
+    bspc rule -a Termite:term-khal desktop='^0'
+    bspc rule -a Termite:term-todo desktop='^0'
 
-# Setting pointer, auto hiding after 5 sec.
-xsetroot -cursor_name left_ptr
-unclutter -idle 5 -noevents &
+    LID_STATE=$(cat /proc/acpi/button/lid/LID0/state | awk '{print $2}')
+    if [[ $LID_STATE == "closed" ]]; then
+        # Normal work layout (Primary screen is the one on the right hand side).
+        bspc monitor HDMI3 -d 1 2 3 4 5
+        bspc monitor HDMI2 -d 6 7 8 9 0
+    else
+        # Laptop screen only mode
+        bspc monitor LVDS1 -d 1 2 3 4 5 6 7 8 9 0
+    fi
+    ~/.config/bspwm/autostart.sh
+fi
 
-# Starting lemon-collector.
-/home/marulkan/bin/bar.sh &

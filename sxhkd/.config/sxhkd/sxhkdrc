@@ -139,4 +139,12 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 super + z
-	i3lock -i ~/Downloads/umbrellafull.png -c 000000
+	i3lock-fancy
+
+super + r
+	screenconfig.sh
+
+super + n
+	xdotool search --onlyvisible --classname scratchpad windowunmap \
+	|| xdotool search --classname scratchpad windowmap \
+	|| termite --class=scratchpad --name=scratchpad -t scratchpad --geometry=1000x400+460 &
