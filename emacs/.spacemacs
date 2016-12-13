@@ -28,7 +28,10 @@ values."
      emacs-lisp
      git
      ;; github
-     python
+     ;; python
+     (python :variables
+             python-test-runner 'pytest
+             python-fill-column 79)
      puppet
      ruby
      yaml
@@ -247,7 +250,6 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq python-fill-column 79)
   '(version-control :variables
                     version-control-diff-tool 'diff-hl
                     version-control-global-margin t)
