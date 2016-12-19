@@ -42,6 +42,7 @@ if [[ $(hostname) == "elxf0zgxy1-vf" ]]; then
     alias g_tun='ssh -L29418:selngerrit.mo.sw.ericsson.se:29418 eselnts1403'
 fi
 
+export BROWSER=/usr/bin/qutebrowser
 export SHELL=/usr/bin/zsh
 # Prompt end: %#
 
