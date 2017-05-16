@@ -31,7 +31,9 @@ export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/bin/virtualenvwrapper.sh
 
 if [[ $(hostname) == "elxf0zgxy1-vf" ]]; then
-    export PATH=$PATH:$HOME/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.local/bin
+    export PATH=$PATH:$HOME/bin:$HOME/.local/bin
+    #export PATH=$PATH:$HOME/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.local/bin
+    #source /usr/lib/ruby/gems/2.3.0/gems/tmuxinator-0.9.0/completion/tmuxinator.zsh
     alias ts='export TERM=xterm-256color; ssh -q -t eselnts1403.mo.sw.ericsson.se "exec zsh"'
     alias tmx='export TERM=xterm-256color; ssh -t eselnts1403.mo.sw.ericsson.se "exec bin/tmx work"'
     alias ln09='xrandr --output LVDS1 --auto --left-of HDMI2 --output HDMI2 --auto --output HDMI1 --off; sleep 1; bspc monitor LVDS1 -d I II III IV V; bspc monitor HDMI2 -d VI VII VIII IX X; nitrogen --restore'
