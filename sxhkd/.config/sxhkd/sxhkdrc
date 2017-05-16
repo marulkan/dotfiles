@@ -4,7 +4,8 @@
 
 # terminal emulator
 super + Return
-	termite
+	st tmux attach
+#	termite
 
 # program launcher
 super + space
