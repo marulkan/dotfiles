@@ -24,7 +24,7 @@ alias ls="ls --color -F"
 alias ll='ls -l --color=auto --human-readable --group-directories-first --classify'
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
-#alias vim='nvim'
+alias vim='nvim'
 alias mc='ranger'
 
 export WORKON_HOME="$HOME/.virtualenvs"
