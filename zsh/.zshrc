@@ -66,3 +66,4 @@ function jira-new {
 function jira-assign-me {
     jira-cli update --assign ehandoy $@
 }
+source /usr/share/fzf/key-bindings.zsh

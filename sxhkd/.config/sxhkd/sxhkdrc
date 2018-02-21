@@ -4,7 +4,16 @@
 
 # terminal emulator
 super + Return
-	st -e tmux
+    alacritty -e tmux
+
+super + shift + Return
+    alacritty -e ~/bin/work.sh -s
+
+super + alt + shift + Return
+    alacritty -e ~/bin/work.sh -c
+
+super + alt + Return
+    alacritty -e nvim
 
 # program launcher
 super + space
