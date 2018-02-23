@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
-  Plug 'bling/vim-airline'                    " Status line
+  Plug 'vim-airline/vim-airline'                    " Status line
+  Plug 'vim-airline/vim-airline-themes'                    " Status line
   Plug 'jeffkreeftmeijer/vim-numbertoggle'    " Auto relative number toggling
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'Shougo/vimproc.vim', {'do' : 'make'}

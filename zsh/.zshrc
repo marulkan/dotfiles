@@ -16,8 +16,6 @@ setopt noflowcontrol
 setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt prompt_subst
-. /etc/profile.d/vte.sh
-eval $(dircolors ~/.dircolors)
 
 # Alias:
 alias ls="ls --color -F"
@@ -30,16 +28,11 @@ alias mc='ranger'
 export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/bin/virtualenvwrapper.sh
 
-if [[ $(hostname) == "elxf0zgxy1-vf" ]]; then
-    export PATH=$PATH:$HOME/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.local/bin
-    alias ts='export TERM=xterm-256color; ssh -q -t eselnts1403.mo.sw.ericsson.se "exec zsh"'
-    alias tmx='export TERM=xterm-256color; ssh -t eselnts1403.mo.sw.ericsson.se "exec bin/tmx work"'
-    alias ln09='xrandr --output LVDS1 --auto --left-of HDMI2 --output HDMI2 --auto --output HDMI1 --off; sleep 1; bspc monitor LVDS1 -d I II III IV V; bspc monitor HDMI2 -d VI VII VIII IX X; nitrogen --restore'
-    alias ln01='xrandr --output LVDS1 --auto --right-of HDMI1 --output HDMI1 --auto --output HDMI2 --off; sleep 1; bspc monitor LVDS1 -d I II III IV V; bspc monitor HDMI1 -d VI VII VIII IX X; nitrogen --restore'
-    alias screen_light='sudo tee /sys/class/backlight/acpi_video0/brightness <<< 95'
-    alias standalone_screen='xrandr --output LVDS1 --output HDMI1 --off --output HDMI2 --off; sleep 1; bspc monitor LVDS1 -d I II III IV V VI VII VIII IX X; nitrogen --restore'
-    alias vmware='rdesktop -K -d ERICSSON -u ehandoy -p - -g 1600x1000 eselnmw1037'
-    alias g_tun='ssh -L29418:selngerrit.mo.sw.ericsson.se:29418 eselnts1403'
+if [[ $(hostname) == "elxa2ls2bh2" ]]; then
+    export PATH=$PATH:$HOME/bin:$HOME/.local/bin
+    # alias ln01='xrandr --output LVDS1 --auto --right-of HDMI1 --output HDMI1 --auto --output HDMI2 --off; sleep 1; bspc monitor LVDS1 -d I II III IV V; bspc monitor HDMI1 -d VI VII VIII IX X; nitrogen --restore'
+    # alias standalone_screen='xrandr --output LVDS1 --output HDMI1 --off --output HDMI2 --off; sleep 1; bspc monitor LVDS1 -d I II III IV V VI VII VIII IX X; nitrogen --restore'
+    # alias g_tun='ssh -L29418:selngerrit.mo.sw.ericsson.se:29418 eselnts1403'
 fi
 
 export BROWSER=/usr/bin/qutebrowser
