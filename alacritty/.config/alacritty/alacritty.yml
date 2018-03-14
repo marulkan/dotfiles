@@ -34,7 +34,7 @@ window:
   decorations: true
 
 # Display tabs using this many cells (changes require restart)
-tabspaces: 8
+tabspaces: 4
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -109,8 +109,8 @@ custom_cursor_colors: false
 colors:
   # Default colors
   primary:
-    background: '0x1b1b1b'
-    foreground: '0xf7f7f7'
+    background: '0x1c1b19'
+    foreground: '0xfce8c3'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
@@ -119,25 +119,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x000000'
-    red:     '0xb84131'
-    green:   '0x7da900'
-    yellow:  '0xc4a500'
-    blue:    '0x62a3c4'
-    magenta: '0xba8acc'
-    cyan:    '0x207383'
-    white:   '0xa1a1a1'
+    black:   '0x1c1b19'
+    red:     '0xef2f27'
+    green:   '0x519f50'
+    yellow:  '0xfbb829'
+    blue:    '0x2c78bf'
+    magenta: '0xe02c6d'
+    cyan:    '0x0aaeb3'
+    white:   '0x918175'
 
   # Bright colors
   bright:
-    black:   '0x7a7a7a'
-    red:     '0xd6837c'
-    green:   '0xc4f137'
-    yellow:  '0xfee14d'
-    blue:    '0x8dcff0'
-    magenta: '0xf79aff'
-    cyan:    '0x6ad9cf'
-    white:   '0xf7f7f7'
+    black:   '0x2d2c29'
+    red:     '0xf75341'
+    green:   '0x98bc37'
+    yellow:  '0xfed06e'
+    blue:    '0x68a8e4'
+    magenta: '0xff5c8f'
+    cyan:    '0x53fde9'
+    white:   '0xfce8c3'
 
   # Dim colors (Optional)
   dim:
