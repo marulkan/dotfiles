@@ -1,52 +1,28 @@
 call plug#begin('~/.config/nvim/plugged')
-  Plug 'vim-airline/vim-airline'                    " Status line
-  Plug 'vim-airline/vim-airline-themes'                    " Status line
-  Plug 'jeffkreeftmeijer/vim-numbertoggle'    " Auto relative number toggling
-  Plug 'bronson/vim-trailing-whitespace'
-  Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-  Plug 'Shougo/unite.vim'
-  Plug 'rking/ag.vim'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'tpope/vim-fugitive'
-  Plug 'junegunn/vim-easy-align'
-  Plug 'google/yapf'
-  Plug 'python-mode/python-mode'
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'zchee/deoplete-jedi'
+    Plug 'Shougo/denite.nvim'
+    Plug 'chemzqm/vim-easygit'
+    Plug 'chemzqm/denite-git'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'vim-python/python-syntax'
+    Plug 'godlygeek/tabular'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'mitsuhiko/vim-jinja'
+    Plug 'itchyny/lightline.vim'
+    Plug 'jeffkreeftmeijer/vim-numbertoggle'    " Auto relative number toggling
+    Plug 'Vimjas/vim-python-pep8-indent'
+    Plug 'roosta/srcery'
+    Plug 'tpope/vim-fugitive'
 call plug#end()
 
-let g:pymode_python = 'python3'
+let g:deoplete#enable_at_startup = 1
+let g:python_highlight_all = 1
+let g:vim_markdown_folding_disabled = 1
 
-let g:pymode_rope = 1
+" set background=dark
+" execute 'colorscheme smyck' 
 
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-let g:pymode_lint_cwindow = 0
-" Auto check on save
-let g:pymode_lint_write = 1
-
-" Support virtualenv
-let g:pymode_virtualenv = 1
-
-let g:pymode_breakpoint = 0
-
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-" Don't autofold code
-let g:pymode_folding = 0
-
-set background=dark
-"try
-"  colorscheme mustang
-"catch
-"endtry
 
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -54,34 +30,23 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
-colorscheme twodark
 
 if (exists('+colorcolumn'))
-  set colorcolumn=80
-  highligh ColorColumn ctermbg=9
+  set colorcolumn=81
 endif
 
-let g:unite_source_history_yank_enable = 1
-try
-  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-catch
-endtry
-" search a file in the filetree
-nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec/async<cr>
-" reset not it is <C-l> normally
-:nnoremap <space>r <Plug>(unite_restart)
+colorscheme srcery
 
-" --- type  to search the word in all files in the current dir
-nmap 8 :Ag <c-r>=expand("<cword>")<cr><cr>
-nnoremap <space>/ :Ag
-
-" Easy align interactive
-vnoremap <silent> <Enter> :EasyAlign<cr>
-
-let g:airline_theme='onedark'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:lightline = {
+      \ 'colorscheme': 'srcery',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
 " Tab Options"
 set shiftwidth=4
@@ -94,7 +59,7 @@ set title
 set hidden
 
 syntax enable
-set nomodeline
+" set nomodeline
 set noshowmode                                          " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set backspace=indent,eol,start                          " Backspace will delete EOL chars, as well as indents
 set shortmess=atToOI                                    " To avoid the 'Hit Enter' prompts caused by the file messages
@@ -121,7 +86,7 @@ set encoding=utf-8
 set list listchars=tab:»·
 
 " General UI Options"
-set mouse=a
+" set mouse=a
 set laststatus=2       " Always show the statusline
 set showmatch          " Shows matching brackets when text indicator is over them
 set scrolloff=5        " Show 5 lines of context around the cursor
@@ -147,9 +112,6 @@ set smartindent
 " Clear search highlighting
 nnoremap <silent><leader>c :nohlsearch<CR>
 
-" Highlight the current line
-nnoremap <silent> <Leader>h ml:execute 'match Search /\%'.line('.').'l/'<CR>
-
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -166,5 +128,3 @@ map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
 
-" map <C-P> :YAPF<cr>
-autocmd FileType python nnoremap <C-P> :0,$!yapf<cr>
