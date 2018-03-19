@@ -1,24 +1,26 @@
 call plug#begin('~/.config/nvim/plugged')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'zchee/deoplete-jedi'
-    Plug 'Shougo/denite.nvim'
-    Plug 'chemzqm/vim-easygit'
-    Plug 'chemzqm/denite-git'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'vim-python/python-syntax'
-    Plug 'godlygeek/tabular'
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " autocomplete
+    Plug 'zchee/deoplete-jedi'                                      " autocomplete for python
+    Plug 'Shougo/denite.nvim'                                       " fuzzyfinder
+    Plug 'chemzqm/vim-easygit'                                      " git commands inside vim
+    Plug 'chemzqm/denite-git'                                       " git log in denite
+    Plug 'airblade/vim-gitgutter'                                   " git changes in sidebar
+    Plug 'vim-python/python-syntax'                                 " syntax highlighting
+    Plug 'godlygeek/tabular'                                        " auto adjustment and lineup of text
     Plug 'plasticboy/vim-markdown'
     Plug 'mitsuhiko/vim-jinja'
-    Plug 'itchyny/lightline.vim'
-    Plug 'jeffkreeftmeijer/vim-numbertoggle'    " Auto relative number toggling
+    Plug 'itchyny/lightline.vim'                                    " statusbar below
+    Plug 'jeffkreeftmeijer/vim-numbertoggle'                        " Auto relative number toggling
     Plug 'Vimjas/vim-python-pep8-indent'
-    Plug 'roosta/srcery'
-    Plug 'tpope/vim-fugitive'
+    Plug 'roosta/srcery'                                            " fancy font colours
+    Plug 'itchyny/vim-gitbranch'                                    " show branch in statusbar
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
 let g:python_highlight_all = 1
 let g:vim_markdown_folding_disabled = 1
+
+let g:easygit_enable_command = 1
 
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -40,7 +42,7 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'gitbranch#name'
       \ },
       \ }
 
