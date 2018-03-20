@@ -141,5 +141,11 @@ call denite#custom#map(
 call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
       \ [ '.git/', '.ropeproject/', '__pycache__/',
       \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
+call denite#custom#alias('source', 'file_rec/git', 'file_rec')
 
-map go :Denite file_rec buffer<cr>
+call denite#custom#var('file_rec/git', 'command',
+      \ ['git', 'ls-files', '-co', '--exclude-standard'])
+nnoremap <silent> <C-p> :<C-u>Denite
+map go :Denite
+      \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'` buffer<CR>
+
