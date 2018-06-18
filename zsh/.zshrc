@@ -24,6 +24,7 @@ alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias vim='nvim'
 alias mc='ranger'
+alias mutt='neomutt'
 
 export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/bin/virtualenvwrapper.sh

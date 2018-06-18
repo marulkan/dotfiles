@@ -4,16 +4,16 @@
 
 # terminal emulator
 super + Return
-    alacritty -e tmux
+    kitty --single-instance --instance-group normal
 
 super + shift + Return
-    alacritty -e ~/bin/work.sh -s
+    kitty --single-instance --instance-group work ~/bin/work.sh -s
 
 super + alt + shift + Return
-    alacritty -e ~/bin/work.sh -c
+    kitty --single-instance --instance-group elx ~/bin/work.sh -c
 
 super + alt + Return
-    alacritty -e nvim
+    kitty --single-instance --instance-group neovim nvim
 
 # program launcher
 super + space
@@ -27,16 +27,6 @@ super + shift + space
 super + alt + space
 	clerk
 
-# make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
-
-#
-# bspwm hotkeys
-#
-
-# quit bspwm normally
-super + alt + Escape
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -148,10 +138,10 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 super + z
-	i3lock-fancy
+	~/bin/i3lock-fancy
 
 super + r
-	screenconfig.sh
+	~/bin/screenconfig.sh
 
 super + n
 	xdotool search --onlyvisible --classname scratchpad windowunmap \
